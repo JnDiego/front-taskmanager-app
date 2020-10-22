@@ -1,6 +1,7 @@
 import React from 'react'
 import Header from '../layout/Header'
 import Sidebar from '../layout/Sidebar'
+import FormTask from '../tasks/FormTask'
 
 const Projects = () => {
   return (
@@ -10,6 +11,7 @@ const Projects = () => {
         <div className="seccion-principal">
           <Header />
           <main>
+            <FormTask />
             <div className="contenedor-tareas">
             </div>
           </main>
