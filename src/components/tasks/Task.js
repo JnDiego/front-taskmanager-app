@@ -1,10 +1,44 @@
 import React from 'react'
 
-const Task = () => {
+const Task = ({task}) => {
   return (
-    <div>
-      
-    </div>
+    <li className="tarea sombra">
+      <p>{task.name}</p>
+      <div className="estado">
+        {task.status && (
+          <button
+            type="button"
+            className="completo"
+          >
+            Finished
+          </button>
+        )}
+        {!task.status && (
+          <button
+            type="button"
+            className="incompleto"
+          >
+            Incomplete
+          </button>
+        )}
+      </div>
+
+      <div className="acciones">
+        <button
+          type="button"
+          className="btn btn-primario"
+        >
+          Edit
+        </button>
+
+        <button
+          type="button"
+          className="btn btn-secundario"
+        >
+          Delete
+        </button>
+      </div>
+    </li>
   )
 }
 

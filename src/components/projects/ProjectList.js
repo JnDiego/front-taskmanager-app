@@ -10,13 +10,15 @@ const ProjectList = () => {
   ];
 
   return (
-    <ul className="listado-proyectos">
-      {projects.map(project => (
-        <Project 
-          project={project}
-        />
-      ))}
-    </ul>
+    <React.Fragment>
+      <ul className="listado-proyectos">
+        {projects.map(project => (
+          <Project 
+            project={project}
+          />
+        ))}
+      </ul>
+    </React.Fragment>
   )
 }
 
