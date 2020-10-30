@@ -1,13 +1,18 @@
-import React, { useContext } from 'react'
+import React, { useContext, useEffect } from 'react'
 import projectContext from '../../context/projects/projectContext';
 import Project from './Project'
 
 const ProjectList = () => {
 
-  // get state from form
+  // extract projects from initialState
   const projectsContext = useContext(projectContext);
-  const { projects } = projectsContext;
+  const { projects, getProjects } = projectsContext;
 
+  useEffect(() => {
+    getProjects();
+  }, [])
+
+  // check to project content
   if(projects.length === 0 ) return null;
 
   return (
