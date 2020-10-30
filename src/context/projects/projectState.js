@@ -6,7 +6,13 @@ import { PROJECT_FORM } from '../../types'
 
 const ProjectState = (props) => {
   const initialState = {
-    form : false
+    projects : [
+      { id: 1, name: 'Virtual Store' },
+      { id: 2, name: 'Intranet' },
+      { id: 3, name: 'Website design' },
+      { id: 4, name: 'MERN' },
+    ],
+    form: false
   }
 
   // Dispatch
@@ -21,7 +27,8 @@ const ProjectState = (props) => {
 
   return (
     <projectContext.Provider
-      value = {{
+      value={{
+        projects: state.projects,
         form: state.form,
         showForm
       }}
