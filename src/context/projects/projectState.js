@@ -2,21 +2,28 @@ import React, { useReducer } from 'react'
 
 import projectContext from './projectContext'
 import projectReducer from './projectReducer'
+import { PROJECT_FORM } from '../../types'
 
 const ProjectState = (props) => {
   const initialState = {
-    newProject : false
+    form : false
   }
 
   // Dispatch
   const [state, dispatch] = useReducer(projectReducer, initialState)
 
   //CRUD
+  const showForm = () => {
+    dispatch({
+      type: PROJECT_FORM
+    })
+  }
 
   return (
     <projectContext.Provider
       value = {{
-        newProject: state.newProject
+        form: state.form,
+        showForm
       }}
     >
       {props.children}

@@ -5,7 +5,7 @@ const NewProject = () => {
 
   // get state from form
   const projectsContext = useContext(ProjectContext);
-  const { newProject } = projectsContext;
+  const { form, showForm } = projectsContext;
 
   const [project, setProject] = useState({
     name: '',
@@ -30,16 +30,22 @@ const NewProject = () => {
     // Reset form
   }
 
+  // Show form
+  const onClickForm = () => {
+    showForm();
+  }
+
   return (
     <React.Fragment>
       <button
         type="button"
         className="btn btn-block btn-primario"
+        onClick={onClickForm}
       >
         New Project
       </button>
 
-      { newProject && (
+      { form && (
         <form
         className="formulario-nuevo-proyecto"
         onSubmit={onSubmit}
