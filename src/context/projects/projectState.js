@@ -4,7 +4,7 @@ import * as uuid from 'uuid';
 
 import projectContext from './projectContext'
 import projectReducer from './projectReducer'
-import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT } from '../../types'
+import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT, VALIDATE_FORM } from '../../types'
 
 const ProjectState = (props) => {
 
@@ -17,7 +17,8 @@ const ProjectState = (props) => {
 
   const initialState = {
     projects : [],
-    form: false
+    form: false,
+    errorform: false,
   }
 
   // Dispatch
@@ -48,14 +49,23 @@ const ProjectState = (props) => {
     })
   }
 
+  // Validate form for errors
+  const showError = () => {
+    dispatch({
+      type: VALIDATE_FORM
+    })
+  }
+
   return (
     <projectContext.Provider
       value={{
         projects: state.projects,
         form: state.form,
+        errorform: state.errorform,
         showForm,
         getProjects,
-        addProject
+        addProject,
+        showError
       }}
     >
       {props.children}
