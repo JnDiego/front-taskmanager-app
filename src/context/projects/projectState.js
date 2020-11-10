@@ -4,7 +4,7 @@ import * as uuid from 'uuid';
 
 import projectContext from './projectContext'
 import projectReducer from './projectReducer'
-import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT, VALIDATE_FORM } from '../../types'
+import { PROJECT_FORM, GET_PROJECTS, ADD_PROJECT, VALIDATE_FORM, ACTUAL_PROJECT } from '../../types'
 
 const ProjectState = (props) => {
 
@@ -19,6 +19,7 @@ const ProjectState = (props) => {
     projects : [],
     form: false,
     errorform: false,
+    project: null,
   }
 
   // Dispatch
@@ -56,16 +57,26 @@ const ProjectState = (props) => {
     })
   }
 
+  // Select project that user clicks
+  const actualProject = projectID => {
+    dispatch({
+      tpye: ACTUAL_PROJECT,
+      payload: projectID
+    })
+  }
+
   return (
     <projectContext.Provider
       value={{
         projects: state.projects,
         form: state.form,
         errorform: state.errorform,
+        project: state.project,
         showForm,
         getProjects,
         addProject,
-        showError
+        showError,
+        actualProject
       }}
     >
       {props.children}
