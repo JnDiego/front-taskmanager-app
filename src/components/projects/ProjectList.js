@@ -14,7 +14,7 @@ const ProjectList = () => {
   }, [])
 
   // check to project content
-  if(projects.length === 0 ) return null;
+  if(projects.length === 0 ) return (<p>There are no projects, ¡start by creating one!</p>);
 
   return (
     <React.Fragment>

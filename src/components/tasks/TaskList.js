@@ -6,9 +6,9 @@ const TaskList = () => {
 
   // get state from projects
   const projectsContext = useContext(projectContext);
-  const { project } = projectsContext;
+  const { project, deleteProject } = projectsContext;
 
-  // Validate actualProject
+  // Validate actualproject
   if(!project) {
     return (
       <h2>Select a project</h2>
@@ -16,7 +16,7 @@ const TaskList = () => {
   }
 
   // Array destructuring to extract actual project
-  const [actualProject] = project
+  const [actualproject] = project
 
   const projectTasks = [
     { name: 'Select platform', status: true },
@@ -25,9 +25,13 @@ const TaskList = () => {
     { name: 'Select Hosting', status: false }
   ]
 
+  const onClickDelete = () => {
+    deleteProject(actualproject.id);
+  }
+
   return (
     <React.Fragment>
-      <h2>Project: { actualProject.name }</h2>
+      <h2>Project: { actualproject.name }</h2>
       <ul className="listado-tareas">
         {projectTasks.length === 0
           ? (<li className="tarea"><p>There are no tasks on the project.</p></li>)
@@ -41,6 +45,7 @@ const TaskList = () => {
       <button
         type="button"
         className="btn btn-eliminar"
+        onClick={onClickDelete}
       >
         Delete Project &times;
       </button>
