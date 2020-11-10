@@ -3,9 +3,9 @@ import projectContext from '../../context/projects/projectContext';
 
 const Project = ({project}) => {
 
-    // get state from projects
-    const projectsContext = useContext(projectContext);
-    const { actualProject } = projectsContext;
+  // get state from projects
+  const projectsContext = useContext(projectContext);
+  const { actualProject } = projectsContext;
 
   return (
     <li>

@@ -60,7 +60,7 @@ const ProjectState = (props) => {
   // Select project that user clicks
   const actualProject = projectID => {
     dispatch({
-      tpye: ACTUAL_PROJECT,
+      type: ACTUAL_PROJECT,
       payload: projectID
     })
   }
