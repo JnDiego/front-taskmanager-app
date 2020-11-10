@@ -8,6 +8,7 @@ const ProjectList = () => {
   const projectsContext = useContext(projectContext);
   const { projects, getProjects } = projectsContext;
 
+  // Get projects when component is loaded
   useEffect(() => {
     getProjects();
   }, [])

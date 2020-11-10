@@ -5,7 +5,7 @@ const NewProject = () => {
 
   // get state from form
   const projectsContext = useContext(projectContext);
-  const { form, showForm } = projectsContext;
+  const { form, showForm, addProject } = projectsContext;
 
   const [project, setProject] = useState({
     name: '',
@@ -24,10 +24,17 @@ const NewProject = () => {
     e.preventDefault();
 
     // Validate project
+    if(name === '') {
+      return;
+    }
 
     // Add project to state
+    addProject(project)
 
     // Reset form
+    setProject({
+      name: ''
+    })
   }
 
   // Show form
