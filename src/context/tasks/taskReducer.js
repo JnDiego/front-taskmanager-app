@@ -4,7 +4,9 @@ import {
   PROJECT_TASKS,
   TASK_STATUS,
   VALIDATE_TASK,
-  ACTUAL_TASK
+  ACTUAL_TASK,
+  EDIT_TASK,
+  CLEAN_TASK
 } from '../../types'
 
 export default (state, action) => {
@@ -31,6 +33,7 @@ export default (state, action) => {
         ...state,
         tasks: state.tasks.filter(task => task.id !== action.payload)
       }
+    case EDIT_TASK:
     case TASK_STATUS:
       return {
         ...state,
@@ -40,6 +43,11 @@ export default (state, action) => {
       return {
         ...state,
         selectedtask: action.payload
+      }
+    case CLEAN_TASK:
+      return {
+        ...state,
+        selectedtask: null
       }
     default:
       return state

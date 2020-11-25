@@ -12,6 +12,7 @@ const ProjectList = () => {
   // Get projects when component is loaded
   useEffect(() => {
     getProjects();
+    // eslint-disable-next-line
   }, [])
 
   // check to project content
