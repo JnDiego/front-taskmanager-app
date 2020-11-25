@@ -18,12 +18,7 @@ const TaskList = () => {
   // Array destructuring to extract actual project
   const [actualproject] = project
 
-  const projectTasks = [
-    { name: 'Select platform', status: true },
-    { name: 'Select colors', status: false },
-    { name: 'Select payment platforms', status: true },
-    { name: 'Select Hosting', status: false }
-  ]
+  const projectTasks = []
 
   const onClickDelete = () => {
     deleteProject(actualproject.id);
