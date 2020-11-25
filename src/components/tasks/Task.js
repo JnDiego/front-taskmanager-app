@@ -13,7 +13,12 @@ const Task = ({task}) => {
 
   // Get context task function
   const tasksContext = useContext(taskContext);
-  const { deleteTask, getProjectTasks } = tasksContext;
+  const { deleteTask, getProjectTasks, changeStatusTask } = tasksContext;
+
+  const changeStatus = task => {
+    task.status = !task.status;
+    changeStatusTask(task);
+  }
 
   const deleteTaskButton = id => {
     deleteTask(id);
@@ -28,6 +33,7 @@ const Task = ({task}) => {
           <button
             type="button"
             className="completo"
+            onClick={() => {changeStatus(task)}}
           >
             Finished
           </button>
@@ -36,6 +42,7 @@ const Task = ({task}) => {
           <button
             type="button"
             className="incompleto"
+            onClick={() => {changeStatus(task)}}
           >
             Incomplete
           </button>
