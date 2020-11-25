@@ -13,7 +13,7 @@ const Task = ({task}) => {
 
   // Get context task function
   const tasksContext = useContext(taskContext);
-  const { deleteTask, getProjectTasks, changeStatusTask } = tasksContext;
+  const { deleteTask, getProjectTasks, changeStatusTask, setActualTask } = tasksContext;
 
   const changeStatus = task => {
     task.status = !task.status;
@@ -23,6 +23,10 @@ const Task = ({task}) => {
   const deleteTaskButton = id => {
     deleteTask(id);
     getProjectTasks(actualProject.id)
+  }
+
+  const selectTask = task => {
+    setActualTask(task);
   }
 
   return (
@@ -53,6 +57,7 @@ const Task = ({task}) => {
         <button
           type="button"
           className="btn btn-primario"
+          onClick={() => selectTask(task)}
         >
           Edit
         </button>
