@@ -1,5 +1,6 @@
 import React, { useContext } from 'react'
 import projectContext from '../../context/projects/projectContext';
+import taskContext from '../../context/tasks/taskContext';
 import Task from './Task'
 
 const TaskList = () => {
@@ -7,6 +8,10 @@ const TaskList = () => {
   // get state from projects
   const projectsContext = useContext(projectContext);
   const { project, deleteProject } = projectsContext;
+
+  // Get project tasks
+  const tasksContext = useContext(taskContext);
+  const { projecttasks } = tasksContext;
 
   // Validate actualproject
   if(!project) {
@@ -18,8 +23,6 @@ const TaskList = () => {
   // Array destructuring to extract actual project
   const [actualproject] = project
 
-  const projectTasks = []
-
   const onClickDelete = () => {
     deleteProject(actualproject.id);
   }
@@ -28,9 +31,9 @@ const TaskList = () => {
     <React.Fragment>
       <h2>Project: { actualproject.name }</h2>
       <ul className="listado-tareas">
-        {projectTasks.length === 0
+        {projecttasks.length === 0
           ? (<li className="tarea"><p>There are no tasks on the project.</p></li>)
-          : projectTasks.map(task => (
+          : projecttasks.map(task => (
             <Task
               task={task}
             />
