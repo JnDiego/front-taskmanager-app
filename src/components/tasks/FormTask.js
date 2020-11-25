@@ -11,7 +11,7 @@ const FormTask = () => {
 
   // Get context task function
   const tasksContext = useContext(taskContext);
-  const { addTask } = tasksContext;
+  const { taskerror, addTask, validateTask, getProjectTasks } = tasksContext;
 
   // Form State
   const [task, setTask] = useState({
@@ -41,13 +41,23 @@ const FormTask = () => {
     e.preventDefault();
 
     //Validate
+    if(name.trim() === '') {
+      validateTask();
+      return;
+    }
 
     //Add new task to task state
     task.projectId = actualProject.id;
     task.state = false;
     addTask(task)
 
+    // Get and filter actual project tasks
+    getProjectTasks(actualProject.id);
+
     //Reload form
+    setTask({
+      name: ''
+    })
   }
 
   return (
@@ -61,6 +71,11 @@ const FormTask = () => {
           <input type="submit" className="btn btn-primario btn-submit btn-block" value="Add Task"/>
         </div>
       </form>
+      {taskerror && (
+        <p className="mensaje error">
+          The task name is required
+        </p>
+      )}
     </div>
   )
 }
