@@ -35,6 +35,7 @@ const TaskList = () => {
           ? (<li className="tarea"><p>There are no tasks on the project.</p></li>)
           : projecttasks.map(task => (
             <Task
+              key={task.id}
               task={task}
             />
           ))
